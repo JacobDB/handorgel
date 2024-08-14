@@ -21,7 +21,6 @@ export default class Handorgel extends EventEmitter {
     this._listeners = {}
 
     this._bindEvents()
-    this._initAria()
     this.update()
   }
 
@@ -100,7 +99,6 @@ export default class Handorgel extends EventEmitter {
     })
 
     this._unbindEvents()
-    this._cleanAria()
 
     // clean reference to handorgel instance
     this.element.handorgel = null
@@ -117,20 +115,6 @@ export default class Handorgel extends EventEmitter {
         fold.close()
       }
     })
-  }
-
-  _initAria() {
-    if (!this.options.ariaEnabled) {
-      return
-    }
-
-    if (this.options.multiSelectable) {
-      this.element.setAttribute('aria-multiselectable', 'true')
-    }
-  }
-
-  _cleanAria() {
-    this.element.removeAttribute('aria-multiselectable')
   }
 
   _bindEvents() {
